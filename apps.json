@@ -1,0 +1,28 @@
+{
+  "site": {
+    "name": "Das",
+    "tagline": "Software, built in the open.",
+    "domain": "example.com",
+    "routing": "subdomain",
+    "github": "https://github.com/realaaravdas",
+    "appsRoot": "/srv/apps",
+    "hubRoot": "/srv/hub"
+  },
+  "apps": [
+    {
+      "slug": "example-app",
+      "name": "Example App",
+      "description": "Placeholder entry. Send me a GitHub URL and I will replace this with a real project.",
+      "repo": "https://github.com/realaaravdas/example-app",
+      "tags": [
+        "TypeScript",
+        "React"
+      ],
+      "type": "node",
+      "port": 4001,
+      "start": "npm run start",
+      "build": "npm ci && npm run build",
+      "status": "planned"
+    }
+  ]
+}
