@@ -148,3 +148,40 @@ h2.big { font-size: clamp(48px, 9vw, 130px); margin-bottom: 40px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
 }
+
+/* ---------- section rail (ruler scrollbar + kinetic titles) ---------- */
+.rail-root { display: none; }
+@media (min-width: 900px) and (hover: hover) {
+  .rail-root { display: block; }
+  html { scrollbar-width: none; }
+  html::-webkit-scrollbar { display: none; }
+  main, .footer { padding-right: 60px; }
+}
+.rail-fade { position: fixed; pointer-events: none; z-index: 39; backdrop-filter: blur(9px); -webkit-backdrop-filter: blur(9px); background: color-mix(in srgb, var(--bg) 62%, transparent); }
+.rail-fade-side {
+  top: 0; bottom: 0; right: 0; width: 150px;
+  mask-image: linear-gradient(to left, #000 30%, rgba(0,0,0,.6) 55%, rgba(0,0,0,.2) 78%, transparent);
+  -webkit-mask-image: linear-gradient(to left, #000 30%, rgba(0,0,0,.6) 55%, rgba(0,0,0,.2) 78%, transparent);
+}
+.rail-fade-top, .rail-fade-bottom { right: 0; width: 440px; background: color-mix(in srgb, var(--bg) 78%, transparent); }
+.rail-fade-top {
+  top: 0; height: 250px;
+  mask-image: radial-gradient(100% 100% at 100% 0%, #000 38%, rgba(0,0,0,.8) 56%, rgba(0,0,0,.45) 72%, rgba(0,0,0,.15) 87%, transparent 97%);
+  -webkit-mask-image: radial-gradient(100% 100% at 100% 0%, #000 38%, rgba(0,0,0,.8) 56%, rgba(0,0,0,.45) 72%, rgba(0,0,0,.15) 87%, transparent 97%);
+}
+.rail-fade-bottom {
+  bottom: 0; height: 190px;
+  mask-image: radial-gradient(100% 100% at 100% 100%, #000 38%, rgba(0,0,0,.8) 56%, rgba(0,0,0,.45) 72%, rgba(0,0,0,.15) 87%, transparent 97%);
+  -webkit-mask-image: radial-gradient(100% 100% at 100% 100%, #000 38%, rgba(0,0,0,.8) 56%, rgba(0,0,0,.45) 72%, rgba(0,0,0,.15) 87%, transparent 97%);
+}
+.rail { position: fixed; top: 0; bottom: 0; right: 0; width: 60px; z-index: 41; cursor: crosshair; touch-action: none; outline: none; }
+.rail canvas { display: block; }
+.rail:focus-visible { box-shadow: inset -2px 0 0 var(--cyan); }
+.rail-titles { position: fixed; inset: 0; z-index: 40; pointer-events: none; }
+.rail-letter {
+  position: absolute; top: 0; left: 0; white-space: pre; will-change: transform, opacity;
+  font: 700 34px/1 "Inter", system-ui, sans-serif; letter-spacing: 0; color: var(--text);
+  text-shadow: 0 0 4px var(--bg), 0 0 12px var(--bg), 0 0 24px var(--bg);
+}
+.rail-link { position: absolute; pointer-events: none; border-radius: 6px; }
+.rail-link:focus-visible { outline: 1px solid var(--cyan); }

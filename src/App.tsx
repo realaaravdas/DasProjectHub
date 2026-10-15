@@ -4,6 +4,7 @@ import Nav from "./components/Nav";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
 import Approach from "./components/Approach";
+import SectionRail from "./components/SectionRail";
 import Footer from "./components/Footer";
 import { usePointerTracking } from "./hooks/usePointer";
 
@@ -15,7 +16,8 @@ export default function App() {
       <div className="spotlight" aria-hidden />
       <Cursor />
       <Nav />
-      <main>
+      <SectionRail />
+      <main id="main">
         <Hero />
         <Projects />
         <Approach />
